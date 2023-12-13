@@ -96,11 +96,11 @@ var game = function(){
                 ball.style.top = (ball.offsetTop + movement) +"px";
                 break;
             case 2: // derecha, arriba
-                ball.style.left = (ball.offsetLeft - movement) +"px";
+                ball.style.left = (ball.offsetLeft + movement) +"px";
                 ball.style.top = (ball.offsetTop - movement) +"px";
                 break;
             case 3: // izquierda, abajo
-                ball.style.left = (ball.offsetLeft + movement) +"px";
+                ball.style.left = (ball.offsetLeft - movement) +"px";
                 ball.style.top = (ball.offsetTop + movement) +"px";
                 break;
             case 4: // izquierda, arriba
@@ -132,12 +132,24 @@ var game = function(){
     }
 
     function colliderPlayer1(){
+        if(ball.offsetLeft <= (bar1.clientWidth) &&
+           ball.offsetTop >= bar1.offsetTop &&
+           ball.offsetTop <= (bar1.offsetTop + bar1.clientHeight)){
         return false;
     }
 
+    return false;
+}
+
     function colliderPlayer2(){
+        if(ball.offsetLeft <= (width-bar2.clientWidth) &&
+           ball.offsetTop >= bar2.offsetTop &&
+           ball.offsetTop <= (bar2.offsetTop + bar2.clientHeight)){
         return false;
     }
+
+    return false;
+}
 
     function moveBar(){
         if(player1.keyPress){
